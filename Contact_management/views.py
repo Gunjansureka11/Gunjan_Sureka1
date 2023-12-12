@@ -72,15 +72,15 @@ def contact_details(request, con_id):
 	
 
 
-def check_if_contact_exists(operation, contact_id, contact_email):
-	if operation == "create_contact" and contacts.objects.filter(email = contact_email):
-		print('exists')
-		return True
-	elif operation == "update_contact" and contacts.objects.filter(email = contact_email).exclude(id = contact_id):
-		print('exists')
-		return True
-	else:
-		return False
+# def check_if_contact_exists(operation, contact_id, contact_email):
+# 	if operation == "create_contact" and contacts.objects.filter(email = contact_email):
+# 		print('exists')
+# 		return True
+# 	elif operation == "update_contact" and contacts.objects.filter(email = contact_email).exclude(id = contact_id):
+# 		print('exists')
+# 		return True
+# 	else:
+# 		return False
 	
 
 
