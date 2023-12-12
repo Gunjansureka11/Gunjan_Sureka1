@@ -1,5 +1,5 @@
 """
-ASGI config for Ashutosh_Bagal project.
+ASGI config for Gunjan_Sureka project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Ashutosh_Bagal.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Gunjan_Sureka.settings')
 
 application = get_asgi_application()
