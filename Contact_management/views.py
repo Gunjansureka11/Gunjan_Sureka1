@@ -8,7 +8,6 @@ from django.contrib import messages
 def home(request):
 	data = contacts.objects.all()
 	context = {"contactList" : data}
-	print("daataa", data)
 	return render(request, 'home.html', context)
 
 def create_contact(request):
@@ -18,9 +17,9 @@ def create_contact(request):
 		email=request.POST['email']
 		notes=request.POST['notes']
 
-		if check_if_contact_exists("create_contact", "", email):
-			messages.error(request, "Duplicate Contact With Same Email Id Exists")
-			return render(request ,"create_contact.html")
+		if check_if_contact_exists("", email, 1):
+			context = {"isError" : True, "msg" : "Contact with same Email-Id found!"}
+			return render(request ,"create_contact.html", context )
 
 		new_contact = contacts(name=name, email=email, notes=notes, time=datetime.now())
 		new_contact.save()
@@ -37,10 +36,8 @@ def update_contact(request, con_id):
 		contact_record.email=request.POST['email']
 		contact_record.notes=request.POST['notes']
 
-		if check_if_contact_exists("update_contact", con_id, contact_record.email):
-			context = {"contact_record" : contact_record}
-
-			messages.error(request, "Duplicate Contact With Same Email Id Exists")
+		if check_if_contact_exists(con_id, contact_record.email, 2):
+			context = {"contact_record" : contact_record, "isError" : True, "msg" : "Contact with same Email-Id found!"}
 			return render(request ,"update_contact.html", context)
 		
 		contact_record.save()	
@@ -53,7 +50,6 @@ def update_contact(request, con_id):
 def delete_contact(request, con_id):
 	contact_record = contacts.objects.get(id = con_id)
 	if request.method == 'POST':
-		print(">>>>>>>>>>>delete>>>>>>")
 		contact_record.delete()
 		messages.success(request, "Contact Deleted!")
 
@@ -64,7 +60,6 @@ def delete_contact(request, con_id):
 def contact_details(request, con_id):
 	contact_record = contacts.objects.get(id = con_id)
 	if request.method == 'POST':
-		print(">>>>>>>>>>>detail>>>>>>")
 		contact_record.delete()
 		return redirect("home")
 
@@ -72,12 +67,10 @@ def contact_details(request, con_id):
 	
 
 
-def check_if_contact_exists(operation, contact_id, contact_email):
-	if operation == "create_contact" and contacts.objects.filter(email = contact_email):
-		print('exists')
+def check_if_contact_exists(contact_id, contact_email, operationCode):
+	if operationCode == 1 and contacts.objects.filter(email = contact_email):
 		return True
-	elif operation == "update_contact" and contacts.objects.filter(email = contact_email).exclude(id = contact_id):
-		print('exists')
+	elif operationCode == 2 and contacts.objects.filter(email = contact_email).exclude(id = contact_id):
 		return True
 	else:
 		return False

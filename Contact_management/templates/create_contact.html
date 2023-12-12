@@ -16,7 +16,7 @@
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous"
 	/>
-	<link rel="stylesheet" href="{% static 'base_style.css' %}">
+	<link rel="stylesheet" href="{% static 'style_css.css' %}">
 
 
 	
@@ -24,16 +24,18 @@
 <body>
 	
 	<div class="body">
-	<div class="sub-header">Create A Contact</div>
+	<div class="header2">Create A Contact</div>
 
-	{% if messages %}
-		{% for msg in messages %} 
+	{% if isError %}
 		<div class="alert alert-danger alert-dismissible fade show" role="alert">
 			{{msg}}
-			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
-		{% endfor %}	
 	{% endif %}
+	<!-- {% if messages %}
+		{% for msg in messages %}  -->
+		
+		<!-- {% endfor %}	
+	{% endif %} -->
 
 	<form action="" method="POST">
 		{% csrf_token %}
@@ -65,8 +67,8 @@
 		<textarea class="form-control" id="notes" name="notes"></textarea>
 		</div>
 
-		<button type="submit" class="color-button">Submit</button>
-		<a href="{% url 'home' %}"><button type="button" class="cancel-button">Cancel</button></a>
+		<button type="submit" class="theme-button">Submit</button>
+		<a href="{% url 'home' %}"><button type="button" class="nuetral-button">Cancel</button></a>
 	</form>
 	</div>
 </body>

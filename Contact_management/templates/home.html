@@ -17,7 +17,7 @@
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 		crossorigin="anonymous"
 	/>
-	<link rel="stylesheet" href="{% static 'base_style.css' %}">
+	<link rel="stylesheet" href="{% static 'style_css.css' %}">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -25,18 +25,18 @@
 
 	<div class="body">
 	
+		
 		{% if messages %}
 			{% for msg in messages %} 
 			<div class="alert alert-success alert-dismissible fade show" role="alert">
 				{{msg}}
-				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 			{% endfor %}	
 		{% endif %}
 
 		<div class="button">
 			<a href="{% url 'create_contact' %}">
-			<button type="button" class="color-button">  Create Contact  </button>
+			<button type="button" class="theme-button">  Create Contact  </button>
 			</a>
 		</div><br>
 		<table class="table table-hover">

@@ -6,7 +6,7 @@ body {
     margin-left: 5%;
     margin-right: 5%;
 }
-.color-button{
+.theme-button{
     font-family: Georgia, serif; 
     color: white;
     background-color: #007eb0;
@@ -15,7 +15,7 @@ body {
     border-color: #007eb0;
     margin-right: 15pt;
 }
-.cancel-button{
+.nuetral-button{
     font-family: Georgia, serif; 
     color: black;
     background-color: white;
@@ -24,7 +24,7 @@ body {
     border-color: white;
     margin-right: 15pt;
 }
-.delete-button{
+.discard-button{
     font-family: Georgia, serif; 
     color: white;
     background-color: #d0311c;
@@ -33,11 +33,12 @@ body {
     border-color: #d0311c;
     margin-right: 15pt;
 }
-.sub-header{
+.header2{
     font-family: Georgia, serif; 
     color: black; 
     font-size: 24pt; 
-    font-weight: bold; text-align: center; 
+    font-weight: bold; 
+    text-align: center; 
     margin-top: 2%; 
     margin-bottom: 2%;
 }
